@@ -53,6 +53,6 @@ print("List of methods of a class: dir(message) " + str(dir(message)))
 print()
 print(help(str.lower))
 print()
-print(help(str))
+# print(help(str))
 
 print()
