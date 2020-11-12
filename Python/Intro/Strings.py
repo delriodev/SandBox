@@ -22,10 +22,11 @@ m18 = 'f\'{message}, {new_message}. Welocome!\' : '
 m20 = 'To get a list of all attributes and methods of a class. dir(message)'
 
 # Casting int to str
+    # We can construct str with INTEGERS, LISTS
 m4 = str(len(message))
 # Selecting a character from a string
+# These are methods from the List Object
 m6 = message[1]
-# Selecting a segment of characters from a string
 m8 = message[0:7]
 m10 = message[:7]
 m12 = message[7:]
@@ -49,7 +50,7 @@ print(m16 + str(message.find('Sherb')))
 print(m17 + new_message)
 print(m18 + m19)
 print()
-print("List of methods of a class: dir(message) " + str(dir(message)))
+# print("List of methods of a class: dir(message) " + str(dir(message)))
 print()
 print(help(str.lower))
 print()
