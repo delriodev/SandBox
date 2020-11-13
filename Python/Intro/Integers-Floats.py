@@ -7,8 +7,7 @@ print('''
                         Floor division (Quotient): // 
                         Exponent                 : **
                         Modulus (Remainder)      : % 
-
-                        Conparaisons             : == != > < >= <=
+                        
 ''')
 print("                        my_int            = " + str(my_int))
 print("                        my_float          = " + str(my_float))
