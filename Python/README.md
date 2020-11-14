@@ -1,4 +1,4 @@
-This folder contains the work i've completed from [this in-depth Python tutorial](https://www.youtube.com/watch?v=YYXdXT2l-Gg&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=1&ab_channel=CoreySchafer)
+This folder contains the work i've completed so far from [this in-depth Python tutorial](https://www.youtube.com/watch?v=YYXdXT2l-Gg&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=1&ab_channel=CoreySchafer)
 
 The course covers:
 + The python language in depth.
