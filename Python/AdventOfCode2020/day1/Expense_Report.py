@@ -1,11 +1,9 @@
-# INPUT : A collection of numbers, an amount of entries n=2
-# OUTPUT : The product of the first n numbers that sum to 2020 
+# PART ONE
+# Find a pair that sum to a given value
+# Divide the array into two sections
+# O(n2 + n)
 
-numbers = []
-ENTRIES = 3
-TARGET = 2020
-
-def binary_search(arr, target):
+def find2numbers(arr, target):
 
     pivot = get_first_index_bigger_than(arr, target/2)
 
@@ -14,23 +12,15 @@ def binary_search(arr, target):
             if(x + y == 2020):
                 return x*y
 
-
 def get_first_index_bigger_than(arr, target):
     for index, val in enumerate(arr):
         if(val > target):
             return index
     return -1
 
-# 1. Parse the data into an int array
-with open('input') as input:
-    numbers = [int(val) for val in input] 
-# 2. Find the 2 numbers
-numbers.sort()
-# 3. Binary search
-print(binary_search(numbers, TARGET))
-
-# PART TWO
-# For n = 3
+# Find a triplet that sum to a given value
+# Two pointer technique
+# O(n2)
 
 def find3Numbers(arr, target):
     for i in range(0, len(arr) - 2):
@@ -48,4 +38,16 @@ def find3Numbers(arr, target):
                 r -= 1
     return -1
 
+numbers = []
+TARGET = 2020
+
+# 1. Parse the data into an int array
+with open('input') as input:
+    numbers = [int(val) for val in input] 
+numbers.sort()
+
+# PART ONE
+print(find2numbers(numbers, TARGET))
+
+# PART TWO
 print(find3Numbers(numbers, TARGET))
