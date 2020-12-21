@@ -95,5 +95,3 @@ np.hstack([k,j]) # [[1 2 3 4 1 2 3 4][5 6 7 8 5 6 7 8]]
 j[j > 5] # [6 7 8]
 j > 5 # [[False False False False][False  True  True  True]]
 b[0][[1, 3, 5]] # [2 4 6]
-
-print(b[0][[1, 3, 5]])
