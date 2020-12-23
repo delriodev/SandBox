@@ -4,6 +4,6 @@ taquin.py
 solution_taquin.py 
     Implementation of the A* algorithm.
     
-**To test** \n
-Clone repo, navigate to it \n
+**To test**\
+Clone repo, navigate to it\
 Enter $python taquin.py in command line
