@@ -3,3 +3,7 @@ taquin.py
     
 solution_taquin.py 
     Implementation of the A* algorithm.
+    
+**To test**
+Clone repo, navigate to it
+enter $python taquin.py in command line
