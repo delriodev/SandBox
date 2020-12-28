@@ -33,63 +33,53 @@ import numpy as np
 ###
 
 
-def joueur_tictactoe(etat,fct_but,fct_transitions,str_joueur):
+def alpha_beta(state, fct_goal, fct_transitions, str_player, alpha=float("-inf"), beta = float("inf")):
 
-    alpha = -float("inf")
-    beta = float("inf")
+    if(fct_goal(state)):
+        return fct_goal(state), None
 
+    if(str_player == 'X'):
+        max_eval = float('-inf')
+        next_action = None
 
-    def tour_max(etat, alpha, beta):
+        for a, s in fct_transitions(state).items():
+            candidate_score, _ = alpha_beta(s, fct_goal, fct_transitions, 'O', alpha, beta)
 
-        if fct_but(etat) is not None:
-           return fct_but(etat), None
-        
-        u = -float("inf")
-        a = None
-
-        for action,e in fct_transitions(etat).items():
-           
-            utility,_ = tour_min(e, alpha, beta)
-
-            if  utility > u:
-                a = action
-                u = utility
-
-            if u >= beta:
-                return u,a
-
-            alpha = max(alpha, u)
-
-        return u,a
-
-    def tour_min(etat, alpha, beta):
-
-        if fct_but(etat) is not None:
-            return fct_but(etat), None
-
-        u = float("inf")
-        a = None
-
-        for action,e in fct_transitions(etat).items():
-
-            utility,_ = tour_max(e, alpha, beta)
-
-            if utility < u:
-                a = action
-                u = utility
-
-            if u <= alpha:
-                return u,a
+            # Update local maximum
+            if(max_eval < candidate_score):
+                max_eval = candidate_score
+                next_action = a
             
-            beta = min(beta, u)
-        
-        return u,a
+						# Pruning
+            if(beta <= alpha):
+                return max_eval, next_action
 
+            # Update global maximum
+            alpha = max(alpha, candidate_score)
 
-    if str_joueur == 'X':
-        _,action = tour_max(etat, alpha, beta)
+        return max_eval, next_action
+
     else:
-        _,action = tour_min(etat, alpha, beta)
+        min_eval = float('inf')
+        next_action = None
+
+        for a, s in fct_transitions(state).items():
+            candidate_score, _ = alpha_beta(s, fct_goal, fct_transitions, 'X', alpha, beta)
+
+            # Update local minimum
+            if(min_eval > candidate_score):
+                min_eval = candidate_score
+                next_action = a
+            
+			# Pruning
+            if(beta <= alpha):
+                return min_eval, next_action
+
+            # Update global minimum
+            beta = min(candidate_score, beta)
+
+        return min_eval, next_action
 
 
-    return action
+def joueur_tictactoe(etat, fct_but, fct_transitions, str_joueur):
+    return alpha_beta(etat, fct_but, fct_transitions, str_joueur)[1]

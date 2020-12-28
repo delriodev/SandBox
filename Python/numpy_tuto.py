@@ -1,5 +1,6 @@
 # Followed this tutorial : https://www.youtube.com/watch?v=GB9ByFAIAH4&ab_channel=KeithGalli
 import numpy as np
+import random
 
 # Initializing
 np.zeros((2,3)) # [[0., 0., 0.] [0., 0., 0.]]
@@ -95,3 +96,8 @@ np.hstack([k,j]) # [[1 2 3 4 1 2 3 4][5 6 7 8 5 6 7 8]]
 j[j > 5] # [6 7 8]
 j > 5 # [[False False False False][False  True  True  True]]
 b[0][[1, 3, 5]] # [2 4 6]
+
+for i in range(3):
+    n = random.sample(range(1, 51), 7)
+    n.sort()
+    print(n)
