@@ -4,6 +4,7 @@ from operator import attrgetter
 
 #
 # AStarTuple : Class that represents a tuple of TaquinState, score f and parent parent
+# In this implementation the weights are constant and equal 1
 #
 class AStarTuple:
 
