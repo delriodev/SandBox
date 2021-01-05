@@ -1,0 +1,159 @@
+﻿TP2
+a)
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, f) ^ JoueRole(Jean, r) ^ Zombie(r) ^ Role(r,f)
+4. Directeur(Charles)
+5. A f E r Dirige(Charles, f) => Role(r, f) ^ Creature(r)
+6. A f Joue(Jean, f) => Joue(Marie, f)
+7. A f Role(r, f) ^ Creature(r) => Horreur(f)
+8. Zombie(r) => Creature(r)
+9. Acteur(x) => Joue(x, f)
+
+
+b)
+
+- Eliminer les implication:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, f) ^ JoueRole(Jean, r) ^ Zombie(r) ^ Role(r,f)
+4. Directeur(Charles)
+5. A f  E r ¬ Dirige(Charles, f) \/  Role(r, f) ^ Creature(r)
+6. A f  ¬ Joue(Jean, f)  \/ Joue(Marie, f)
+7. A f  ¬ (Role(r, f) ^ Creature(r))  \/  Horreur(f)
+8. ¬ Zombie(r)  \/  Creature(r)
+9. ¬ Acteur(x) \/ Joue(x, f)
+
+
+- Reduire la portee des ¬:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, f) ^ JoueRole(Jean, r) ^ Zombie(r) ^ Role(r,f)
+4. Directeur(Charles)
+5. A f  E r ¬ Dirige(Charles, f) \/  Role(r, f) ^ Creature(r)
+6. A f  ¬ Joue(Jean, f)  \/ Joue(Marie, f)
+7. A f  ¬ Role(r, f) \/  ¬ Creature(r))  \/  Horreur(f)
+8. ¬ Zombie(r)  \/  Creature(r)
+9. ¬ Acteur(x) \/ Joue(x, f)
+
+
+- Standardiser les variables:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, x1) ^ JoueRole(Jean, x2) ^ Zombie(x2) ^ Role(x2,x1)
+4. Directeur(Charles)
+5. A x3  E x4 ¬ Dirige(Charles, x3) \/  Role(x4, x3) ^ Creature(x4)
+6. A x5  ¬ Joue(Jean, x5)  \/ Joue(Marie, x5)
+7. A x6  ¬ Role(x7, x6) \/  ¬ Creature(x7))  \/  Horreur(x6)
+8. ¬ Zombie(x8)  \/  Creature(x8)
+9. ¬ Acteur(x9) \/ Joue(x9, x10)
+
+
+- Eliminer les quantificateurs existentiels:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, x1) ^ JoueRole(Jean, x2) ^ Zombie(x2) ^ Role(x2,x1)
+4. Directeur(Charles)
+5. A x3  ¬ Dirige(Charles, x3) \/  Role(f1(x3), x3) ^ Creature(f1(x3))
+6. A x5  ¬ Joue(Jean, x5)  \/ Joue(Marie, x5)
+7. A x6  ¬ Role(x7, x6) \/  ¬ Creature(x7))  \/  Horreur(x6)
+8. ¬ Zombie(x8)  \/  Creature(x8)
+9. ¬ Acteur(x9) \/ Joue(x9, x10)
+
+
+- Distribuer les disjonctions dans les conjonctions:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, x1) ^ JoueRole(Jean, x2) ^ Zombie(x2) ^ Role(x2,x1)
+4. Directeur(Charles)
+5. A x3  (¬ Dirige(Charles, x3) \/  Role(f1(x3), x3)) ^  (¬ Dirige(Charles, x3) \/ Creature(f1(x3)))
+6. A x5  ¬ Joue(Jean, x5)  \/ Joue(Marie, x5)
+7. A x6  ¬ Role(x7, x6) \/  ¬ Creature(x7))  \/  Horreur(x6)
+8. ¬ Zombie(x8)  \/  Creature(x8)
+9. ¬ Acteur(x9) \/ Joue(x9, x10)
+
+
+- Eliminer les quantificateurs universels:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, x1) ^ JoueRole(Jean, x2) ^ Zombie(x2) ^ Role(x2,x1)
+4. Directeur(Charles)
+5. (¬ Dirige(Charles, x3) \/  Role(f1(x3), x3)) ^  (¬ Dirige(Charles, x3) \/ Creature(f1(x3)))
+6. ¬ Joue(Jean, x5)  \/ Joue(Marie, x5)
+7. ¬ Role(x7, x6) \/  ¬ Creature(x7))  \/  Horreur(x6)
+8. ¬ Zombie(x8)  \/  Creature(x8)
+9. ¬ Acteur(x9) \/ Joue(x9, x10)
+
+
+- Eliminer les conjonctions:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, x1)
+4. JoueRole(Jean, x2)
+5. Zombie(x2)
+6. Role(x2,x1)
+7. Directeur(Charles)
+8. ¬ Dirige(Charles, x3) \/  Role(f1(x3), x3)
+9. ¬ Dirige(Charles, x3) \/ Creature(f1(x3))
+10. ¬ Joue(Jean, x5)  \/ Joue(Marie, x5)
+11. ¬ Role(x7, x6) \/  ¬ Creature(x7))  \/  Horreur(x6)
+12. ¬ Zombie(x8)  \/  Creature(x8)
+13. ¬ Acteur(x9) \/ Joue(x9, x10)
+
+
+
+- Standardiser les variables:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, x1)
+4. JoueRole(Jean, x2)
+5. Zombie(x3)
+6. Role(x4,x5)
+7. Directeur(Charles)
+8. ¬ Dirige(Charles, x5) \/  Role(f1(x5), x5)
+9. ¬ Dirige(Charles, x6) \/ Creature(f1(x7))
+10. ¬ Joue(Jean, x8)  \/ Joue(Marie, x8)
+11. ¬ Role(x10, x9) \/  ¬ Creature(x10)  \/  Horreur(x9)
+12. ¬ Zombie(x11)  \/  Creature(x11)
+13. ¬ Acteur(x12) \/ Joue(x12, x13)
+
+
+c)
+
+Prouvez que Marie a joue dans un film d’horreur.
+Joue(Marie, f) /\ Horreur(f)
+
+- Ajouter les clauses de la negation de l’expression a prouver:
+
+1. Acteur(Marie)
+2. Acteur(Jean)
+3. Joue(Jean, x1)
+4. JoueRole(Jean, x2)
+5. Zombie(x3)
+6. Role(x4,x5)
+7. Directeur(Charles)
+8. ¬ Dirige(Charles, x5) \/  Role(f1(x5), x5)
+9. ¬ Dirige(Charles, x6) \/ Creature(f1(x7))
+10. ¬ Joue(Jean, x8)  \/ Joue(Marie, x8)
+11. ¬ Role(x10, x9) \/  ¬ Creature(x10)  \/  Horreur(x9)
+12. ¬ Zombie(x11)  \/  Creature(x11)
+13. ¬ Acteur(x12) \/ Joue(x12, x13)					
+14.  ¬ (Joue(Marie, f) /\ Horreur(f))  ≡ ¬ Joue(Marie, f) \/ ¬ Horreur(f)		
+
+
+15. Joue(Marie,x8)								3,10   {x1 = x8}
+16.  ¬ Horreur(f)								14,15 {x8 = f}
+17. ¬ Role(x10, f) \/  ¬ Creature(x10) 					11,16 {x9 = f}
+18.  ¬ Creature(x10) 								6,17   {x4 = x10, x5 =f}
+19. ¬ Zombie(x11)								12,18 {x10 = x11}
+20.  {}										5,19   {x3 = x11}
+
