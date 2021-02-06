@@ -1,0 +1,45 @@
+﻿@page "/"
+@inject Code.DB.Context Context
+
+
+<TextEdit Style="margin: 20px; width: auto;" Size="Size.Large" @bind-Text="@TextToAdd" Placeholder="Name" />
+<TextEdit Style="margin: 20px; width: auto;" Size="Size.Large" @bind-Text="@ValueToAdd" Placeholder="Value" MaskType="MaskType.RegEx" EditMask="^[0-9]+$" />
+<Button Style="margin: 0 20px 20px;" Clicked="BtnClicked" Color="Color.Success">Ajouter Element</Button>
+
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHeaderCell>#</TableHeaderCell>
+            <TableHeaderCell>Name</TableHeaderCell>
+            <TableHeaderCell>Value</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        @foreach (var elem in Context.Accounts)
+        {
+            <TableRow>
+                <TableRowHeader>@elem.Id</TableRowHeader>
+                <TableRowCell>@elem.Name</TableRowCell>
+                <TableRowCell>@elem.Number</TableRowCell>
+            </TableRow>
+        }
+    </TableBody>
+</Table>
+
+@code
+{
+    string TextToAdd { get; set; }
+    string ValueToAdd { get; set; }
+
+    void BtnClicked()
+    {
+        int val = int.Parse(ValueToAdd);
+        Context.Accounts.Add(new Code.DB.Account { Name = TextToAdd, Number = val });
+        Context.SaveChanges();
+
+        TextToAdd = "";
+        ValueToAdd = "";
+
+        this.StateHasChanged();
+    }
+}
