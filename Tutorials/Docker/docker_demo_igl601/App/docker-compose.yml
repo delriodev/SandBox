@@ -1,0 +1,23 @@
+version: "3"
+
+services: 
+  db: # This serves as a server reference 
+    image: mysql
+    ports: 
+      - 3306:3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: 'my_secret_pw'
+    volumes: 
+      - db_igl601_dockerTuto_volume:/var/lib/mysql
+
+  client:
+    image: delriodev/igl601_dockertuto_clientapp
+    ports: 
+      - 8080:80
+    depends_on: 
+      - db
+    environment: 
+      ConnectionStringMysql: 'server=db; port=3306; database=tructruc; user=root; password=my_secret_pw; Persist Security Info=False; Connect Timeout=300'
+
+volumes:
+  db_igl601_dockerTuto_volume:

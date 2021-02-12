@@ -17,4 +17,3 @@ INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
 VALUES ('20210204190518_DBInit', '5.0.1');
 
 COMMIT;
-

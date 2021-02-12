@@ -26,8 +26,8 @@ namespace Client
             services.AddRazorPages();
             services.AddServerSideBlazor();
             
-            var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
-            //string connectionString = System.Environment.GetEnvironmentVariable("ConnectionStringMysql");
+            // var connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            string connectionString = System.Environment.GetEnvironmentVariable("ConnectionStringMysql");
 
             services.AddDbContextPool<Context>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -54,11 +54,12 @@ namespace Client
                 endpoints.MapFallbackToPage("/_Host");
             });
 
-            //using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            //{
-            //    var context = serviceScope.ServiceProvider.GetRequiredService<Context>();
-            //    context.Database.Migrate();
-            //}
+            // entity framework : Can you migrate my db if it's not there
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<Context>();
+                context.Database.Migrate();
+            }
         }
     }
 }

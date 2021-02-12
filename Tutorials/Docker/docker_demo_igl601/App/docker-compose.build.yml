@@ -1,0 +1,7 @@
+version: "3"
+services: 
+  client:
+    image: delriodev/igl601_dockertuto_clientapp
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
