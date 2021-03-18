@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionStringMysql": "server=localhost; port=3306; database=tructruc; user=root; password=my-secret-pw; Persist Security Info=False; Connect Timeout=300"
+        "ConnectionStringMysql": "server=localhost; port=3306; database=tructruc; user=root; password=my_secret_pw; Persist Security Info=False; Connect Timeout=300"
       }
     },
     "Client": {

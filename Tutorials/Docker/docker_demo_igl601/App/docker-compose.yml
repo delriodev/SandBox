@@ -3,15 +3,15 @@ version: "3"
 services: 
   db: # This serves as a server reference 
     image: mysql
-    ports: 
+    ports: # For other containers to communicate with this container
       - 3306:3306
     environment: 
       MYSQL_ROOT_PASSWORD: 'my_secret_pw'
     volumes: 
-      - db_igl601_dockerTuto_volume:/var/lib/mysql
+      - db_igl601_dockerTuto_volume:/var/lib/mysql # According to mySQL documentation : <volumeName>:/var/lib/mysql
 
   client:
-    image: delriodev/igl601_dockertuto_clientapp
+    image: delriodev/docker_demo_igl601
     ports: 
       - 8080:80
     depends_on: 
